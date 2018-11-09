@@ -1,0 +1,364 @@
+<gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gco="http://www.isotc211.org/2005/gco" xsi:schemaLocation="http://www.isotc211.org/2005/gmd http://www.isotc211.org/2005/gmd/gmd.xsd">
+   <gmd:fileIdentifier>
+     <gco:CharacterString>{{layer.uuid}}</gco:CharacterString>
+   </gmd:fileIdentifier>
+   <gmd:language>
+     <gco:CharacterString>{{layer.language}}</gco:CharacterString>
+   </gmd:language>
+   <gmd:characterSet>
+     <gmd:MD_CharacterSetCode codeSpace="ISOTC211/19115" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8">utf8</gmd:MD_CharacterSetCode>
+   </gmd:characterSet>
+
+   {% with layer.poc as poc %}
+   <gmd:contact>
+     <gmd:CI_ResponsibleParty>
+       <gmd:individualName {% if not poc.name_long %}gco:nilReason="missing"{% endif %}>
+         {% if poc.name_long %} <gco:CharacterString>{{ poc.name_long }}</gco:CharacterString> {% endif %}
+       </gmd:individualName>
+       <gmd:organisationName {% if not poc.organization %}gco:nilReason="missing"{% endif %}>
+         {% if poc.organization %} <gco:CharacterString>{{ poc.organization }}</gco:CharacterString> {% endif %}
+       </gmd:organisationName>
+       <gmd:contactInfo>
+         <gmd:CI_Contact>
+           <gmd:address>
+             <gmd:CI_Address>
+               <gmd:electronicMailAddress {% if not poc.email %}gco:nilReason="missing"{% endif %}>
+                 {% if poc.email %}<gco:CharacterString>{{ poc.email }}</gco:CharacterString>{% endif %}
+               </gmd:electronicMailAddress>
+             </gmd:CI_Address>
+           </gmd:address>
+
+         </gmd:CI_Contact>
+       </gmd:contactInfo>
+       <gmd:role>
+         <gmd:CI_RoleCode codeSpace="ISOTC211/19115" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="author">author</gmd:CI_RoleCode>
+       </gmd:role>
+     </gmd:CI_ResponsibleParty>
+   </gmd:contact>
+   {% endwith %}
+
+   <gmd:dateStamp>
+     <gco:DateTime>{{layer.csw_insert_date|date:"Y-m-d\TH:i:s\Z"}}</gco:DateTime>
+   </gmd:dateStamp>
+   <gmd:metadataStandardName>
+     <gco:CharacterString>ISO 19115:2003 - Geographic information - Metadata</gco:CharacterString>
+   </gmd:metadataStandardName>
+   <gmd:metadataStandardVersion>
+     <gco:CharacterString>ISO 19115:2003</gco:CharacterString>
+   </gmd:metadataStandardVersion>
+
+   <gmd:spatialRepresentationInfo>
+       <gmd:MD_VectorSpatialRepresentation>
+           <gmd:topologyLevel>
+               <gmd:MD_TopologyLevelCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_TopologyLevelCode" codeListValue=""/></gmd:topologyLevel>
+           <gmd:geometricObjects>
+               <gmd:MD_GeometricObjects>
+                   <gmd:geometricObjectType>
+                       <gmd:MD_GeometricObjectTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_GeometricObjectTypeCode" codeListValue=""/></gmd:geometricObjectType>
+               </gmd:MD_GeometricObjects>
+           </gmd:geometricObjects>
+       </gmd:MD_VectorSpatialRepresentation>
+   </gmd:spatialRepresentationInfo>
+   <gmd:spatialRepresentationInfo>
+        <gmd:MD_GridSpatialRepresentation id="GridSpatialRepresentation">
+            <gmd:numberOfDimensions>
+                <gco:Integer>1</gco:Integer>
+            </gmd:numberOfDimensions>
+            <gmd:axisDimensionProperties>
+                <gmd:MD_Dimension>
+                    <gmd:dimensionName>
+                        <gmd:MD_DimensionNameTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_DimensionNameTypeCode" codeListValue=""/>
+                    </gmd:dimensionName>
+                    <gmd:dimensionSize>
+                        <gco:Integer>0</gco:Integer>
+                    </gmd:dimensionSize>
+                    <gmd:resolution>
+                        <gco:Length uom="meters">1</gco:Length>
+                    </gmd:resolution>
+                </gmd:MD_Dimension>
+            </gmd:axisDimensionProperties>
+            <gmd:cellGeometry>
+                <gmd:MD_CellGeometryCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CellGeometryCode" codeListValue=""/>
+            </gmd:cellGeometry>
+            <gmd:transformationParameterAvailability>
+                <gco:Boolean>true</gco:Boolean>
+            </gmd:transformationParameterAvailability>
+        </gmd:MD_GridSpatialRepresentation>
+   </gmd:spatialRepresentationInfo>
+
+   <gmd:referenceSystemInfo>
+     <gmd:MD_ReferenceSystem>
+       <gmd:referenceSystemIdentifier>
+         <gmd:RS_Identifier>
+           <gmd:code>
+             <gco:CharacterString>4326</gco:CharacterString>
+           </gmd:code>
+           <gmd:codeSpace>
+             <gco:CharacterString>EPSG</gco:CharacterString>
+           </gmd:codeSpace>
+           <gmd:version>
+             <gco:CharacterString>6.11</gco:CharacterString>
+           </gmd:version>
+         </gmd:RS_Identifier>
+       </gmd:referenceSystemIdentifier>
+     </gmd:MD_ReferenceSystem>
+   </gmd:referenceSystemInfo>
+
+   <gmd:identificationInfo>
+     <gmd:MD_DataIdentification>
+       <gmd:citation>
+         <gmd:CI_Citation>
+           <gmd:title>
+             <gco:CharacterString>{{layer.title}}</gco:CharacterString>
+           </gmd:title>
+           <gmd:date>
+             <gmd:CI_Date>
+               <gmd:date>
+                 <gco:DateTime>{{layer.date|date:"Y-m-d\TH:i:s\Z"}}</gco:DateTime>
+               </gmd:date>
+               <gmd:dateType>
+                 <gmd:CI_DateTypeCode codeSpace="ISOTC211/19115" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="{{layer.date_type}}">{{layer.date_type}}</gmd:CI_DateTypeCode>
+               </gmd:dateType>
+             </gmd:CI_Date>
+           </gmd:date>
+           <gmd:presentationForm>
+             <gmd:CI_PresentationFormCode codeSpace="ISOTC211/19115" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_PresentationFormCode" codeListValue="mapDigital">mapDigital</gmd:CI_PresentationFormCode>
+           </gmd:presentationForm>
+         </gmd:CI_Citation>
+       </gmd:citation>
+       <gmd:abstract>
+         <gco:CharacterString>{{layer.abstract}}</gco:CharacterString>
+       </gmd:abstract>
+       <gmd:purpose {% if not layer.purpose %}gco:nilReason="missing"{% endif %}>
+             {% if layer.purpose %}<gco:CharacterString>{{layer.purpose}}</gco:CharacterString>{% endif %}
+       </gmd:purpose>
+       <gmd:status>
+         <gmd:MD_ProgressCode codeSpace="ISOTC211/19115" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ProgressCode" codeListValue="completed">completed</gmd:MD_ProgressCode>
+       </gmd:status>
+
+       <gmd:pointOfContact>
+        <gmd:CI_ResponsibleParty>
+            <gmd:individualName gco:nilReason="missing">
+                <gco:CharacterString>{{layer.nombre_contacto}}</gco:CharacterString>
+            </gmd:individualName>
+            <gmd:organisationName gco:nilReason="missing">
+                <gco:CharacterString>{{layer.organizacion_contacto}}</gco:CharacterString>
+            </gmd:organisationName>
+             <gmd:contactInfo>
+                <gmd:CI_Contact>
+                    <gmd:address>
+                        <gmd:CI_Address>
+                            <gmd:electronicMailAddress>
+                                <gco:CharacterString>{{layer.correo_contacto}}</gco:CharacterString>
+                            </gmd:electronicMailAddress>
+                        </gmd:CI_Address>
+                    </gmd:address>
+                </gmd:CI_Contact>
+            </gmd:contactInfo>
+            <gmd:role>
+                <gmd:CI_RoleCode codeListValue="originator"
+                               codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_RoleCode"/>
+            </gmd:role>
+         </gmd:CI_ResponsibleParty>
+        </gmd:pointOfContact>
+
+       <gmd:graphicOverview>
+         <gmd:MD_BrowseGraphic>
+           <gmd:fileName>
+             <gco:CharacterString>{{ layer.get_thumbnail_url }}</gco:CharacterString>
+           </gmd:fileName>
+           <gmd:fileDescription>
+             <gco:CharacterString>Thumbnail for '{{layer.title}}'</gco:CharacterString>
+           </gmd:fileDescription>
+           <gmd:fileType>
+             <gco:CharacterString>image/png</gco:CharacterString>
+           </gmd:fileType>
+         </gmd:MD_BrowseGraphic>
+       </gmd:graphicOverview>
+
+       {% if layer.keyword_list %}
+       <gmd:descriptiveKeywords>
+         <gmd:MD_Keywords>
+           {% for kw in layer.keyword_list %}
+           <gmd:keyword>
+             <gco:CharacterString>{{kw}}</gco:CharacterString>
+           </gmd:keyword>
+           {% endfor %}
+           <gmd:type>
+              <gmd:MD_KeywordTypeCode codeSpace="ISOTC211/19115" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+            </gmd:type>
+         </gmd:MD_Keywords>
+       </gmd:descriptiveKeywords>
+       {% endif %}
+
+       <gmd:spatialRepresentationType>
+         <gmd:MD_SpatialRepresentationTypeCode codeSpace="ISOTC211/19115" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_SpatialRepresentationTypeCode" codeListValue="{{layer.spatial_representation_type.identifier}}">{{layer.spatial_representation_type.identifier}}</gmd:MD_SpatialRepresentationTypeCode>
+       </gmd:spatialRepresentationType>
+       <gmd:spatialResolution>
+            <gmd:MD_Resolution>
+                <gmd:equivalentScale>
+                    <gmd:MD_RepresentativeFraction>
+                        <gmd:denominator>
+                            <gco:Integer>{{layer.denominador}}</gco:Integer>
+                        </gmd:denominator>
+                    </gmd:MD_RepresentativeFraction>
+                </gmd:equivalentScale>
+            </gmd:MD_Resolution>
+       </gmd:spatialResolution>
+       <gmd:language>
+         <gco:CharacterString>{{layer.language}}</gco:CharacterString>
+       </gmd:language>
+       <gmd:topicCategory {% if not layer.category %}gco:nilReason="missing"{% endif %}>
+         {% if layer.category %}
+         <gmd:MD_TopicCategoryCode>{{layer.category.identifier}}</gmd:MD_TopicCategoryCode>
+         {% endif %}
+       </gmd:topicCategory>
+       <gmd:extent>
+         <gmd:EX_Extent>
+           <gmd:geographicElement>
+             <gmd:EX_GeographicBoundingBox>
+               <gmd:westBoundLongitude>
+                 <gco:Decimal>{{layer.bbox_x0}}</gco:Decimal>
+               </gmd:westBoundLongitude>
+               <gmd:eastBoundLongitude>
+                 <gco:Decimal>{{layer.bbox_x1}}</gco:Decimal>
+               </gmd:eastBoundLongitude>
+               <gmd:southBoundLatitude>
+                 <gco:Decimal>{{layer.bbox_y0}}</gco:Decimal>
+               </gmd:southBoundLatitude>
+               <gmd:northBoundLatitude>
+                 <gco:Decimal>{{layer.bbox_y1}}</gco:Decimal>
+               </gmd:northBoundLatitude>
+             </gmd:EX_GeographicBoundingBox>
+           </gmd:geographicElement>
+         </gmd:EX_Extent>
+       </gmd:extent>
+       {% if layer.temporal_extent_start and layer.temporal_extent_end %}
+       <gmd:extent>
+         <gmd:EX_Extent>
+           <gmd:temporalElement>
+             <gmd:EX_TemporalExtent>
+               <gmd:extent>
+                 <gml:TimePeriod gml:id="T_01">
+                   <gml:beginPosition>{{layer.temporal_extent_start|date:"c"}}</gml:beginPosition>
+                   <gml:endPosition>{{layer.temporal_extent_end|date:"c"}}</gml:endPosition>
+                 </gml:TimePeriod>
+               </gmd:extent>
+             </gmd:EX_TemporalExtent>
+           </gmd:temporalElement>
+         </gmd:EX_Extent>
+       </gmd:extent>
+       {% endif %}
+       <gmd:supplementalInformation>
+         <gco:CharacterString>{{ layer.supplemental_information }}</gco:CharacterString>
+       </gmd:supplementalInformation>
+     </gmd:MD_DataIdentification>
+   </gmd:identificationInfo>
+
+   <gmd:distributionInfo>
+     <gmd:MD_Distribution>
+       <gmd:distributionFormat>
+           <gmd:MD_Format>
+               <gmd:name gco:nilReason="missing">
+                   <gco:CharacterString>{{ layer.nombre_archivo }}</gco:CharacterString>
+               </gmd:name>
+               <gmd:version gco:nilReason="missing">
+                   <gco:CharacterString>{{ layer.version_archivo }}</gco:CharacterString>
+               </gmd:version>
+           </gmd:MD_Format>
+       </gmd:distributionFormat>
+       <gmd:transferOptions>
+         <gmd:MD_DigitalTransferOptions>
+           <gmd:onLine>
+             <gmd:CI_OnlineResource>
+               <gmd:linkage>
+                   <gmd:URL>{{ SITEURL }}{{ layer.get_absolute_url }}</gmd:URL>
+               </gmd:linkage>
+               <gmd:protocol>
+                 <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+               </gmd:protocol>
+               <gmd:description>
+                 <gco:CharacterString>Online link to the '{{layer.title}}' description on GeoNode</gco:CharacterString>
+               </gmd:description>
+             </gmd:CI_OnlineResource>
+           </gmd:onLine>
+           {% for link in layer.link_set.download %}
+           <gmd:onLine>
+             <gmd:CI_OnlineResource>
+               <gmd:linkage>
+                 <gmd:URL>{{link.url}}</gmd:URL>
+               </gmd:linkage>
+               <gmd:protocol>
+                 <gco:CharacterString>WWW:DOWNLOAD-1.0-http--download</gco:CharacterString>
+               </gmd:protocol>
+               <gmd:name>
+                 <gco:CharacterString>{{layer.name}}.{{link.extension}}</gco:CharacterString>
+               </gmd:name>
+               <gmd:description>
+                 <gco:CharacterString>{{layer.title}} ({{link.name}} Format)</gco:CharacterString>
+               </gmd:description>
+             </gmd:CI_OnlineResource>
+           </gmd:onLine>
+           {% endfor %}
+           {% for link in layer.link_set.ows %}
+           <gmd:onLine>
+             <gmd:CI_OnlineResource>
+               <gmd:linkage>
+                 <gmd:URL>{{link.url}}</gmd:URL>
+               </gmd:linkage>
+               <gmd:protocol>
+                 <gco:CharacterString>{{link.link_type}}</gco:CharacterString>
+               </gmd:protocol>
+               <gmd:name>
+                 <gco:CharacterString>{{ layer.alternate }}</gco:CharacterString>
+               </gmd:name>
+               <gmd:description>
+                 <gco:CharacterString>{{layer.workspace}} Service - Provides Layer: {{ layer.title }}</gco:CharacterString>
+               </gmd:description>
+             </gmd:CI_OnlineResource>
+           </gmd:onLine>
+           {% endfor %}
+         </gmd:MD_DigitalTransferOptions>
+       </gmd:transferOptions>
+     </gmd:MD_Distribution>
+   </gmd:distributionInfo>
+   <gmd:dataQualityInfo>
+     <gmd:DQ_DataQuality>
+       <gmd:scope>
+         <gmd:DQ_Scope>
+           <gmd:level>
+             <gmd:MD_ScopeCode codeSpace="ISOTC211/19115" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+           </gmd:level>
+         </gmd:DQ_Scope>
+       </gmd:scope>
+       <gmd:lineage>
+         <gmd:LI_Lineage>
+           <gmd:statement {% if not layer.data_quality_statement %}gco:nilReason="missing"/>{% else %}><gco:CharacterString>{{layer.data_quality_statement}}</gco:CharacterString></gmd:statement>{% endif %}
+         </gmd:LI_Lineage>
+       </gmd:lineage>
+     </gmd:DQ_DataQuality>
+   </gmd:dataQualityInfo>
+
+   <gmd:metadataConstraints>
+    <gmd:MD_LegalConstraints>
+        <gmd:useLimitation gco:nilReason="missing">
+            <gco:CharacterString>{{ layer.limitacion_uso }}</gco:CharacterString>
+        </gmd:useLimitation>
+        <gmd:useConstraints>
+            <gmd:MD_RestrictionCode codeListValue="{{layer.restriction_code_type.identifier}}" codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_RestrictionCode">{{layer.restriction_code_type.identifier}}</gmd:MD_RestrictionCode>
+        </gmd:useConstraints>
+        <gmd:otherConstraints gco:nilReason="missing">
+            <gco:CharacterString>{{ layer.constraints_other}} </gco:CharacterString>
+        </gmd:otherConstraints>
+    </gmd:MD_LegalConstraints>
+   </gmd:metadataConstraints>
+   {% if layer.maintenance_frequency %}
+   <gmd:metadataMaintenance>
+     <gmd:MD_MaintenanceInformation>
+       <gmd:maintenanceAndUpdateFrequency>
+         <gmd:MD_MaintenanceFrequencyCode codeSpace="ISOTC211/19115" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_MaintenanceFrequencyCode" codeListValue="{{layer.maintenance_frequency}}">{{layer.maintenance_frequency}}</gmd:MD_MaintenanceFrequencyCode>
+       </gmd:maintenanceAndUpdateFrequency>
+     </gmd:MD_MaintenanceInformation>
+   </gmd:metadataMaintenance>
+   {% endif %}
+ </gmd:MD_Metadata>
